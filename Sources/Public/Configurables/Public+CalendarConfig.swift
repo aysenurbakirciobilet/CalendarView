@@ -90,6 +90,7 @@ public struct CalendarConfig: Configurable { public init() {}
 
     private(set) var weekdaysView: () -> any WeekdaysView = DefaultWeekdaysView.init
     private(set) var monthLabel: (Date) -> any MonthLabel = DefaultMonthLabel.init
+    private(set) var monthBottomView: (Date) -> any MonthBottomView = DefaultMonthBottomView.init
     private(set) var dayView: (Date, Bool, Binding<Date?>?, Binding<MDateRange?>?) -> any DayView = DefaultDayView.init
 
     private(set) var scrollDate: Date? = nil
