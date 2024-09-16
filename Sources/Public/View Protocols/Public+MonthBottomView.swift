@@ -22,9 +22,7 @@ public extension MonthBottomView {
 
 private extension MonthBottomView {
     func createDefaultContent() -> some View {
-        Text(getString(format: "MMMM"))
-            .font(.system(size: 16, weight: .semibold))
-            .foregroundColor(.onBackgroundPrimary)
+        EmptyView()
     }
 }
 
