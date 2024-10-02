@@ -64,6 +64,9 @@ public extension CalendarConfig {
 
     /// Replaces the default month label with a selected implementation.
     func monthLabel(_ builder: @escaping (Date) -> some MonthLabel) -> Self { changing(path: \.monthLabel, to: builder) }
+    
+    /// Replaces the default month bottom with a selected implementation.
+    func monthBottomView(_ builder: @escaping (Date) -> some MonthBottomView) -> Self { changing(path: \.monthBottomView, to: builder) }
 
     /// Replaces the default day view with a selected implementation.
     func dayView(_ builder: @escaping (Date, Bool, Binding<Date?>?, Binding<MDateRange?>?) -> some DayView) -> Self { changing(path: \.dayView, to: builder) }
@@ -90,6 +93,7 @@ public struct CalendarConfig: Configurable { public init() {}
 
     private(set) var weekdaysView: () -> any WeekdaysView = DefaultWeekdaysView.init
     private(set) var monthLabel: (Date) -> any MonthLabel = DefaultMonthLabel.init
+    private(set) var monthBottomView: (Date) -> any MonthBottomView = DefaultMonthBottomView.init
     private(set) var dayView: (Date, Bool, Binding<Date?>?, Binding<MDateRange?>?) -> any DayView = DefaultDayView.init
 
     private(set) var scrollDate: Date? = nil

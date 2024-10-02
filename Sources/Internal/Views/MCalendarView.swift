@@ -51,6 +51,7 @@ private extension MCalendarView {
         VStack(spacing: configData.monthLabelDaysSpacing) {
             createMonthLabel(data.month)
             createMonthView(data)
+            createMonthBottomView(data.month)
         }
     }
 }
@@ -62,6 +63,11 @@ private extension MCalendarView {
     }
     func createMonthView(_ data: Data.MonthView) -> some View {
         MonthView(selectedDate: $selectedData.date, selectedRange: $selectedData.range, data: data, config: configData)
+    }
+    func createMonthBottomView(_ month: Date) -> some View {
+        configData.monthBottomView(month)
+            .erased()
+            .onAppear { onMonthChange(month) }
     }
 }
 
